@@ -15,9 +15,8 @@ public class Main {
 //        Ride premium = new PremiumRide();
 //        rides.add(premium);
 
-        // Analyze
+//         Analyze
         double averageDuration = dataAnalyzer.averageTripDuration(rides);
         System.out.println("Average Trip Duration: " + averageDuration);
-
     }
 }
