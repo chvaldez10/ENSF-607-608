@@ -1,0 +1,46 @@
+@startuml
+class FileHandler {
++ List<String[]> readCsv(String)
+}
+interface IDataLoader {
+~ List<Ride> load(List<String[]>)
+}
+class DataLoader {
++ List<Ride> load(List<String[]>)
+- Ride createRideFromRow(String[])
+}
+interface IFileHandler {
+~ List<String[]> readCsv(String)
+}
+interface IDataAnalyzer {
+~ double averageTripDuration(List<Ride>)
+}
+class Ride {
+- String pickupDatetime
+- String dropoffDatetime
+- int passengerCount
+- double pickupLongitude
+- double pickupLatitude
+- double dropoffLongitude
+- double dropoffLatitude
+- int tripDuration
+<<constructor>>
+<<getters and setters>>
+}
+class Main {
++ {static} void main(String[])
+}
+class PremiumRide {
+~ boolean hasRefreshments
++ <<Create>> PremiumRide(String,String,int,double,double,double,double,int)
+}
+class DataAnalyzer {
++ double averageTripDuration(List<Ride>)
+}
+
+
+IFileHandler <|.. FileHandler
+IDataLoader <|.. DataLoader
+Ride <|-- PremiumRide
+IDataAnalyzer <|.. DataAnalyzer
+@enduml
