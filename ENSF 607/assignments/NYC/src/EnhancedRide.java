@@ -1,6 +1,6 @@
 public class EnhancedRide extends Ride {
     protected int vendorId;
-    protected boolean storeAndFwdFlag;
+    protected int storeAndFwdFlag; // how data is sent, 0 for No, 1 for Yes
 
     /**
      * Constructs a new {@code EnhancedRide} instance.
@@ -16,7 +16,7 @@ public class EnhancedRide extends Ride {
      * @param vendorId         the ID of the vendor
      * @param storeAndFwdFlag  the store and forward flag
      */
-    public EnhancedRide(String pickupDatetime, String dropoffDatetime, int passengerCount, double pickupLongitude, double pickupLatitude, double dropoffLongitude, double dropoffLatitude, int tripDuration, int vendorId, boolean storeAndFwdFlag) {
+    public EnhancedRide(String pickupDatetime, String dropoffDatetime, int passengerCount, double pickupLongitude, double pickupLatitude, double dropoffLongitude, double dropoffLatitude, int tripDuration, int vendorId, int storeAndFwdFlag) {
         super(pickupDatetime, dropoffDatetime, passengerCount, pickupLongitude, pickupLatitude, dropoffLongitude, dropoffLatitude, tripDuration);
         this.vendorId = vendorId;
         this.storeAndFwdFlag = storeAndFwdFlag;
@@ -45,7 +45,7 @@ public class EnhancedRide extends Ride {
      *
      * @return the store and forward flag
      */
-    public boolean isStoreAndFwdFlag() {
+    public int isStoreAndFwdFlag() {
         return storeAndFwdFlag;
     }
 
@@ -54,7 +54,7 @@ public class EnhancedRide extends Ride {
      *
      * @param storeAndFwdFlag the store and forward flag to set
      */
-    public void setStoreAndFwdFlag(boolean storeAndFwdFlag) {
+    public void setStoreAndFwdFlag(int storeAndFwdFlag) {
         this.storeAndFwdFlag = storeAndFwdFlag;
     }
 }

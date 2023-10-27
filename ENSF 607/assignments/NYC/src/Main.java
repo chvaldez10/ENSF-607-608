@@ -27,8 +27,9 @@ public class Main {
         // Load the raw data into Ride objects
         List<Ride> rides = dataLoader.load(rawData);
 
-        // Ride premium = new PremiumRide();
-        // rides.add(premium);
+        // adding EnhancedRide
+        Ride enhancedRide = new EnhancedRide("2016-03-30  4:14:00 PM", "2016-03-30  5:01:00 PM", 1, -73.7898407, 40.6435585, -73.97066498, 40.68727875, 2824, 1, 1);
+        rides.add(enhancedRide);
 
         // Analyze the ride data and display the average trip duration
         double averageDuration = dataAnalyzer.averageTripDuration(rides);
