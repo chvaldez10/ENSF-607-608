@@ -5,14 +5,14 @@
  */
 
 public class Ride {
-    private String pickupDatetime;
-    private String dropoffDatetime;
-    private int passengerCount;
-    private double pickupLongitude;
-    private double pickupLatitude;
-    private double dropoffLongitude;
-    private double dropoffLatitude;
-    private int tripDuration;
+    protected String pickupDatetime;
+    protected String dropoffDatetime;
+    protected int passengerCount;
+    protected double pickupLongitude;
+    protected double pickupLatitude;
+    protected double dropoffLongitude;
+    protected double dropoffLatitude;
+    protected int tripDuration;
 
     /**
      * Constructs a new {@code Ride} instance.

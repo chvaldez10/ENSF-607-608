@@ -48,15 +48,4 @@ class DataAnalyzer {
 + double averageTripDuration(List<Ride>)
 }
 
-FileHandler --|> IFileHandler : implements
-DataAnalyzer --|> IDataAnalyzer : implements
-
-DataLoader --|> IDataLoader : implements
-DataLoader --> Ride : uses
-Ride <|-- EnhancedRide
-
-Main --> FileHandler : uses
-Main --> DataLoader : uses
-Main --> DataAnalyzer : uses
-
 @enduml
