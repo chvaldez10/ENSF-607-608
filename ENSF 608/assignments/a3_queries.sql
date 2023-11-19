@@ -66,3 +66,80 @@ LEFT JOIN
     PERFORMANCE p on p.MusicId=comp.MusicID
 LEFT JOIN
     CATEGORY cat on cat.CategoryID=p.CategoryID;
+
+--- Query 7
+-- Create a view that only lists the ages of competitors and scrores
+CREATE VIEW SCORE_ANALYSIS AS
+SELECT c.Age, p.Score
+FROM COMPETITOR c, PERFORMANCE p
+WHERE c.CompetitorID=p.CompetitorID;
+
+--- Query 8
+-- Sort SCORE_ANALYSIS by descending order
+SELECT * FROM SCORE_ANALYSIS ORDER BY Score DESC;
+
+-- Query 9
+-- query to find the lowest, average, highest
+SELECT 
+    MAX(Score) AS HighestScore,
+    MIN(Score) AS LowestScore,
+    AVG(Score) AS AverageScore
+FROM 
+    SCORE_ANALYSIS;
+
+-- Query 10
+-- add new column
+ALTER TABLE COMPOSITION
+ADD COLUMN Copyright varchar(255) DEFAULT 'SOCAN';
+
+SELECT * FROM COMPOSITION;
+
+-- Query 11
+-- find competitors that do not meet the age restriction
+SELECT c.CompetitorID, C.age
+FROM
+    COMPETITOR c
+JOIN PERFORMANCE p ON c.CompetitorID=p.CompetitorID
+WHERE
+    NOT EXISTS(
+        SELECT 1
+        FROM 
+            CATEGORY cat
+        WHERE cat.CategoryID=p.CategoryID AND
+            c.age > cat.AgeMin AND
+            c.age < cat.AgeMax
+    );
+
+
+-- check for age restriction
+-- SELECT 
+--     C.FName AS FirstName,
+--     C.LName AS LastName,
+--     C.age as CompetitorAge,
+--     CAT.AgeMin AS MinimumAge,
+--     CAT.AgeMax AS MaximumAge
+-- FROM 
+--     COMPETITOR C
+-- INNER JOIN 
+--     PERFORMANCE P ON C.CompetitorID = P.CompetitorID
+-- INNER JOIN 
+--     CATEGORY CAT ON P.CategoryID = CAT.CategoryID;
+
+-- Query 12
+-- add constraint to COMPETITOR
+ALTER TABLE COMPETITOR
+ADD CONSTRAINT CHK_AGERANGE CHECK (Age>=5 AND Age <=18);
+
+-- Query 13
+-- change Harmony Inc to Harmony Studio
+UPDATE STUDIO
+SET Name = 'Harmony Studio'
+WHERE Name = 'Harmony Inc.';
+
+SELECT * FROM STUDIO;
+SELECT * FROM TEACHER;
+
+-- Question 14
+-- The error message encountered is due to the foreign key constraint in the PERFORMANCE table, which references the MusicID column in the COMPOSITION table. 
+
+-- Question 15
